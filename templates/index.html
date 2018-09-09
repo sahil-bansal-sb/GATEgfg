@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+<style type="text/css">
+	#container{
+		width: 100%;
+		height: 100%
+	}
+	#sidebar{
+		max-width: 260px;
+		max-height: 616px;
+		scroll-behavior: auto;
+		float: left;
+		overflow-y: auto; 
+		height: 100%;
+	}
+	#mainFrame{
+		color: black;
+		overflow: auto;
+		height: 100%;
+	}
+</style>
+{% endblock %}
+
+
+{% block body %}
+<div id="container">
+	<div id="sidebar">
+		<!-- Side Bar -->
+		<div class="panel-group" id="accordion">
+			{% for key in subjects %}
+			<div class="panel panel-default" style="margin-bottom: 10px;">
+				<div class="panel-heading">
+					<h6 class="panel-title" style="margin-bottom: 0px;">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ subjects.index(key)+1 }}">{{ subjects.index(key)+1 }}. {{ key }}</a>
+					</h6>
+				</div>
+				<div id="collapse{{ subjects.index(key)+1 }}" class="panel-collapse collapse">
+					<div class="panel-body">
+						{{ subjpic[key] | safe }}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div id="mainFrame">
+		<!-- iframe -->
+		<iframe style="width: 100%; height: 100%; overflow: scroll; scroll-behavior: smooth;"></iframe>
+	</div>
+</div>
+{% endblock %}
+{% block script %}
+
+<script type="text/javascript" src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="/static/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+
+</script>
+{% endblock %}

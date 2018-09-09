@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Try 1.0</title>
+	<style type="text/css">
+		#sidebar{
+			float: left;
+			max-width: 100px;
+			height: 100%;
+			padding-right: 25px;
+		}
+		#mainCont{
+			height: 100%;	
+		}
+	</style>
+</head>
+<body>
+
+	<div id="sidebar">
+		<ul>
+			<li>
+				<a href="http://www.google.com" disabled="disabled">Google</a>
+			</li>
+
+			<li>
+				<a href="http://www.yahoo.com" disabled="disabled">Yahoo</a>
+			</li>
+
+			<li>
+				<a href="http://www.bing.com" disabled="disabled">Bing</a>
+			</li>
+		</ul>
+	</div>
+	<div id="mainCont">
+		<iframe src="http://www.google.co.in" style="width: 500px; height: 500px;">
+			
+		</iframe>
+	</div>
+	<script type="text/javascript">
+		frame = document.getElementsByTagName('iframe')[0];
+		as = document.getElementsByTagName('a')
+		for (var i = 0; i < as.length; i++) {
+			as[i].onclick = function(){
+				frame.setAttribute('src', as[i].getAttribute('href'))
+				return false;
+			}
+		};
+	</script>
+</body>
+</html>
