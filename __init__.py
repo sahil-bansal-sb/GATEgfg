@@ -8,14 +8,11 @@ from formSideBar import subjects_maker
 app = Flask(__name__)
 
 
-@app.route('/', method=["GET"])
+@app.route('/')
 def index():
-	if request.method == "GET":
-		pass
-	else:
-		subjpic = subjects_maker(tabu=0)
-		subjects = list(subjpic.keys())
-		return render_template("index.html", subjects=subjects, subjpic=subjpic)
+	subjpic = subjects_maker(tabu=0)
+	subjects = list(subjpic.keys())
+	return render_template("index.html", subjects=subjects, subjpic=subjpic)
 
 
 if __name__ == "__main__":
